@@ -14,11 +14,20 @@
             <div class="clearfix"></div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li repeat.for = "row of router.navigation" class="${ row.isActive ? 'link-active' : '' }" >
-                        <a href.bind = "row.href">
+                    <li repeat.for="row of router.navigation | authFilter: authenticated" class="${ row.isActive ? 'link-active' : '' }">
+                        <a href.bind="row.href">
                             <span class="glyphicon glyphicon-${ row.settings.icon }"></span> ${ row.title }
                         </a>
                     </li>
+                </ul>
+                <ul if.bind="!authenticated" class="nav navbar-nav navbar-right">
+                    <li><a href="/#/login">Login</a></li>
+                    <li><a href="/#/signup">Sign up</a></li>
+                </ul>
+
+                <ul if.bind="authenticated" class="nav navbar-nav navbar-right">
+                    <li><a href="/#/profile">Profile</a></li>
+                    <li><a href="/#/logout">Logout</a></li>
                 </ul>
             </div>
         </div>

@@ -1,11 +1,16 @@
 import { Aurelia, PLATFORM } from 'aurelia-framework';
 import { Router, RouterConfiguration } from 'aurelia-router';
 
+import { AuthenticateStep } from 'aurelia-authentication';
+
 export class App {
     router: Router | undefined;
 
     configureRouter(config: RouterConfiguration, router: Router) {
         config.title = 'aureliaCoreIdentity4';
+
+        config.addPipelineStep('authorize', AuthenticateStep);
+
         config.map([{
             route: [ '', 'home' ],
             name: 'home',
@@ -26,7 +31,8 @@ export class App {
             settings: { icon: 'th-list' },
             moduleId: PLATFORM.moduleName('../fetchdata/fetchdata'),
             nav: true,
-            title: 'Fetch data'
+            title: 'Fetch data',
+            auth: true
         }]);
 
         this.router = router;
