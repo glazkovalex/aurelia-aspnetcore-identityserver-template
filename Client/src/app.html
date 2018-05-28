@@ -9,7 +9,7 @@
   </ul>
   <ul if.bind="authenticated" class="nav navbar-nav navbar-right">
       <li><a href="/#/profile">Profile</a></li>
-      <li><p click.delegate="logout()">Logout</p></li>
+      <li><a click.delegate="logout()">Logout</a></li>
   </ul>
   <router-view></router-view>
 </template>

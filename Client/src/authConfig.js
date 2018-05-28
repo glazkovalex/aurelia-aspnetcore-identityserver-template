@@ -12,15 +12,15 @@ export default {
   // ===================
 
   // The SPA url to which the user is redirected after a successful login
-  loginRedirect : '#/',
+  loginRedirect : '#/profile',
   // The SPA url to which the user is redirected after a successful logout
   logoutRedirect : '#/',
   // The SPA route used when an unauthenticated user tries to access an SPA page that requires authentication
-  loginRoute : '#/login',
+  loginRoute : '#/',
   // Whether or not an authentication token is provided in the response to a successful signup
   loginOnSignup : true,
   // If loginOnSignup == false: The SPA url to which the user is redirected after a successful signup (else loginRedirect is used)
-  signupRedirect : '#/login',
+  signupRedirect : '#/',
   // reload page when token expires. 0 = don't reload (default), 1 = do reload page
   expiredReload : 0,
   // reload page when storage changed aka login/logout in other tabs/windows. 0 = don't reload (default), 1 = do reload page
@@ -154,11 +154,11 @@ export default {
       oauthType: '2.0',
       clientId: 'aurelia',
       authorizationEndpoint: 'http://localhost:5000/connect/authorize',
-      redirectUri: 'http://localhost:8080/',
+      redirectUri: 'http://localhost:8080/#/profile',
       logoutEndpoint: 'http://localhost:5000/connect/logout',
-      postLogoutRedirectUri: 'http://localhost:8080/',
+      postLogoutRedirectUri: 'http://localhost:8080',
       responseType: 'id_token token',
-      scope: ['openid profile api1'],
+      scope: ['openid profile api'],
       requiredUrlParams: ['scope', 'nonce', 'resource'],
       state: function () {
          var text = "";
