@@ -5,7 +5,7 @@ using System;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace QuickstartIdentityServer
+namespace IdentityServer
 {
     public class Program
     {
