@@ -11,7 +11,7 @@ namespace Api
     {
         public static void Main(string[] args)
         {
-            Console.Title = "API";
+            Console.Title = "Protected API";
 
             BuildWebHost(args).Run();
         }

@@ -20,15 +20,15 @@ namespace Api
                     options.Authority = "http://localhost:5000";
                     options.RequireHttpsMetadata = false;
 
-                    options.ApiName = "api1";
+                    options.ApiName = "api";
                 });
 
             services.AddCors(options =>
             {
                 // this defines a CORS policy called "default"
-                options.AddPolicy("default", policy =>
+                options.AddPolicy("aurelia", policy =>
                 {
-                    policy.WithOrigins("http://localhost:5003")
+                    policy.WithOrigins("http://localhost:8080")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
@@ -37,7 +37,7 @@ namespace Api
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseCors("default");
+            app.UseCors("aurelia");
 
             app.UseAuthentication();
 
