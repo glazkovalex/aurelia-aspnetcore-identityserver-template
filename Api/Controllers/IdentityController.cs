@@ -16,5 +16,6 @@ namespace Api.Controllers
         {
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
+        
     }
 }

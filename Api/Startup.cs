@@ -19,19 +19,22 @@ namespace Api
                 {
                     options.Authority = "http://localhost:5000";
                     options.RequireHttpsMetadata = false;
-
                     options.ApiName = "api";
                 });
 
             services.AddCors(options =>
             {
-                // this defines a CORS policy called "default"
+                // this defines a CORS policy for Aurelia SPA
                 options.AddPolicy("aurelia", policy =>
                 {
                     policy.WithOrigins("http://localhost:8080")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
+            });
+
+            services.AddAuthorization(options => {
+                options.AddPolicy("HasWebsite", policy => policy.RequireClaim("website"));
             });
         }
 
@@ -40,7 +43,7 @@ namespace Api
             app.UseCors("aurelia");
 
             app.UseAuthentication();
-
+            
             app.UseMvc();
         }
     }
