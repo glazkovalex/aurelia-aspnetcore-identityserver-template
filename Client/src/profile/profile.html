@@ -1,4 +1,6 @@
 <template>
   <h1>Profile</h1>
   <p>You have been logged in as ${name}. Your website is ${website}</p>
+  <h2>Claims</h2>
+  <p repeat.for="claim of claims">${claim.type} - ${claim.value}</p>
 </template>

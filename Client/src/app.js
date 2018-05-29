@@ -19,14 +19,14 @@ export class App {
       { 
         route: ['', 'home'], 
         name: 'home', 
-        moduleId: PLATFORM.moduleName('./home'),
+        moduleId: PLATFORM.moduleName('./home/home'),
         nav: true,
         title: 'Home'
       },
       {
         route: 'profile',
         name: 'profile',
-        moduleId: PLATFORM.moduleName('./profile'),
+        moduleId: PLATFORM.moduleName('./profile/profile'),
         nav: true,
         title: 'Profile',
         auth: true
@@ -56,8 +56,5 @@ export class App {
 
   attached() {
     console.log(PLATFORM);
-    // this.eventAggregator.subscribe('authentication-change', authenticated => {
-    //   console.log("EVENT: " + authenticated);
-    // });
   }
 }

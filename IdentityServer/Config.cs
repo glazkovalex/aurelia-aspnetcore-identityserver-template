@@ -25,7 +25,10 @@ namespace IdentityServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("api", "Protected API")
+                new ApiResource("api", "Protected API") {
+                    UserClaims = new List<string>() {
+                        "website"
+                }}
             };
         }
 

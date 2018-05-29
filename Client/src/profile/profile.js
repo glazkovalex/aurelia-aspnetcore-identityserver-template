@@ -1,14 +1,17 @@
 import { inject } from 'aurelia-framework';
 import { AuthService } from 'aurelia-authentication';
+import { Config } from 'aurelia-api';
 
-@inject(AuthService)
+@inject(AuthService, Config)
 export class Profile {
   authService;
+  apiService;
   name;
   website;
 
-  constructor(authService) {
+  constructor(authService, config) {
     this.authService = authService;
+    this.apiService = config.getEndpoint('protected-api');
   }
 
   attached() {
@@ -17,8 +20,9 @@ export class Profile {
         this.name = response.name;
         this.website = response.website;
       });
-    console.log(this.authService.client);
-    console.log(this.authService.authentication);
-    console.log(this.authService.config);
+    this.apiService.find('/Identity')
+      .then(response => {
+        this.claims = response;
+      })
   };
 }
