@@ -17,5 +17,8 @@ export class Profile {
         this.name = response.name;
         this.website = response.website;
       });
+    console.log(this.authService.client);
+    console.log(this.authService.authentication);
+    console.log(this.authService.config);
   };
 }

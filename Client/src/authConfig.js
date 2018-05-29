@@ -12,15 +12,15 @@ export default {
   // ===================
 
   // The SPA url to which the user is redirected after a successful login
-  loginRedirect : '/profile',
+  loginRedirect : '/',
   // The SPA url to which the user is redirected after a successful logout
-  logoutRedirect : '',
+  logoutRedirect : '/',
   // The SPA route used when an unauthenticated user tries to access an SPA page that requires authentication
-  loginRoute : '',
+  loginRoute : '/',
   // Whether or not an authentication token is provided in the response to a successful signup
   loginOnSignup : true,
   // If loginOnSignup == false: The SPA url to which the user is redirected after a successful signup (else loginRedirect is used)
-  signupRedirect : '',
+  signupRedirect : '/',
   // reload page when token expires. 0 = don't reload (default), 1 = do reload page
   expiredReload : 0,
   // reload page when storage changed aka login/logout in other tabs/windows. 0 = don't reload (default), 1 = do reload page

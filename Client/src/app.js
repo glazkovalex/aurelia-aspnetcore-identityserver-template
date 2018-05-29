@@ -1,6 +1,6 @@
 import { PLATFORM, inject, computedFrom } from 'aurelia-framework';
 import { Router, RouterConfiguration } from 'aurelia-router';
-import { AuthService, AuthenticateStep } from 'aurelia-authentication';
+import { AuthService, AuthenticateStep, AuthorizeStep } from 'aurelia-authentication';
 
 @inject(AuthService)
 export class App {
@@ -14,6 +14,7 @@ export class App {
     config.title = 'Aurelia';
     config.options.pushState = true;
     config.options.root = '/';
+    //config.addPipelineStep('authorize', AuthenticateStep);
     config.map([
       { 
         route: ['', 'home'], 
@@ -51,5 +52,12 @@ export class App {
       .then(response => {
         console.log(response);
       });
+  }
+
+  attached() {
+    console.log(PLATFORM);
+    // this.eventAggregator.subscribe('authentication-change', authenticated => {
+    //   console.log("EVENT: " + authenticated);
+    // });
   }
 }
