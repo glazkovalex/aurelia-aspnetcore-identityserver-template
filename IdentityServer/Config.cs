@@ -44,7 +44,7 @@ namespace IdentityServer
                     AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
 
-                    RedirectUris = { "http://localhost:8080/#/profile" },
+                    RedirectUris = { "http://localhost:8080/profile" },
                     PostLogoutRedirectUris = { "http://localhost:8080" },
                     AllowedCorsOrigins = { "http://localhost:8080" },
 

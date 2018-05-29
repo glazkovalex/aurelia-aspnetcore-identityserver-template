@@ -4,21 +4,18 @@ import { AuthService } from 'aurelia-authentication';
 @inject(AuthService)
 export class Profile {
   authService;
+  name;
+  website;
 
   constructor(authService) {
     this.authService = authService;
   }
 
-  getMe() {
-    return this.authService.getMe()
-      .then(response => console.log(response));
-  };
-
-  authenticate() {
-    return this.authService.authenticate('identityServer', '')
-      .then((response) => {
-        console.log(response);
-        //console.log(isAuthenticated());
+  attached() {
+    this.authService.getMe()
+      .then(response => {
+        this.name = response.name;
+        this.website = response.website;
       });
-  }
+  };
 }

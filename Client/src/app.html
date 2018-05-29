@@ -1,15 +1,30 @@
 <template>
-  <ul>
-      <li repeat.for="nav of router.navigation | authFilter: isAuthenticated & signal: 'authentication-change'" class="${nav.isActive ? 'active' : ''}">
-        <a href.bind="nav.href">${nav.title}</a>
-      </li>
-  </ul>
-  <ul if.bind="!authenticated" class="nav navbar-nav navbar-right">
-      <li><p click.delegate="authenticate()">Login</p></li>
-  </ul>
-  <ul if.bind="authenticated" class="nav navbar-nav navbar-right">
-      <li><a href="/#/profile">Profile</a></li>
-      <li><a click.delegate="logout()">Logout</a></li>
-  </ul>
-  <router-view></router-view>
+  <require from="./reset.css"></require>
+  <require from="./styles.css"></require>
+  <nav class="main-nav">
+      <ul>
+        <li repeat.for="nav of router.navigation | authFilter: isAuthenticated & signal: 'authentication-change'" class="${nav.isActive ? 'active' : ''}">
+          <a class="main-nav-link" href.bind="nav.href">${nav.title}</a>
+        </li>
+      </ul>
+      <ul if.bind="!authenticated">
+        <li if.bind="!authenticated">
+          <button class="main-nav-link" click.delegate="authenticate()">Login</button>
+        </li>
+      </ul>
+      <ul if.bind="authenticated">
+          <li>
+            <a class="main-nav-link" href="/profile">Profile</a>
+          </li>
+          <li>
+            <button class="main-nav-link" click.delegate="logout()">Logout</button>
+          </li>
+      </ul>
+  </nav>
+  <main class="main-view">
+    <router-view></router-view>
+  </main>
+  <footer class="main-footer">
+    Copyright &copy; fedonman
+  </footer>
 </template>

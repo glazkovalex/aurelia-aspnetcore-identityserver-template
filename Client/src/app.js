@@ -12,6 +12,8 @@ export class App {
 
   configureRouter(config, router) {
     config.title = 'Aurelia';
+    config.options.pushState = true;
+    config.options.root = '/';
     config.map([
       { 
         route: ['', 'home'], 
@@ -36,11 +38,6 @@ export class App {
   get authenticated() {
     return this.authService.authenticated;
   }
-
-  getMe() {
-    this.authService.getMe()
-      .then(response => console.log(response));
-  };
 
   authenticate() {
     return this.authService.authenticate('identityServer', '')
